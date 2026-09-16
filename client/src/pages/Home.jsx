@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import ListingCard from "../components/ListingCard";
-import listings from "../data/listings";
 
-function Home() {
+function Home({ listings }) {
   const latestListings = listings.slice(0, 3);
 
   return (
