@@ -5,7 +5,9 @@ import Home from "./pages/Home";
 import Listings from "./pages/Listings";
 import ListingDetails from "./pages/ListingDetails";
 import AddListing from "./pages/AddListing";
+
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 import initialListings from "./data/listings";
 
@@ -44,6 +46,8 @@ function App() {
           element={<AddListing onAddListing={addListing} />}
         />
       </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
 }

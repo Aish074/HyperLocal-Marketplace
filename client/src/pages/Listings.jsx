@@ -15,18 +15,29 @@ function Listings({ listings }) {
     const matchesCategory =
       category === "All" || listing.category === category;
 
-    return matchesSearch && matchesCategory; //so a listing must satify both searchmatches and category matches
+    return matchesSearch && matchesCategory;
   });
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-8">
-      <h1 className="text-3xl font-bold">Browse Listings</h1>
+    <main className="mx-auto max-w-6xl px-6 py-16">
 
-      <p className="mt-2 text-gray-600">
-        Find things being sold near you.
-      </p>
+      {/* Page heading */}
+      <div>
+        <p className="text-sm font-medium uppercase tracking-wide text-[#8A8577]">
+          Marketplace
+        </p>
 
-      <div className="mt-6 flex flex-col gap-4 sm:flex-row">
+        <h1 className="mt-2 text-4xl font-bold text-[#1A1A1A] sm:text-5xl">
+          Browse listings
+        </h1>
+
+        <p className="mt-3 text-base leading-7 text-[#5F5E5A]">
+          Find useful things being sold near you.
+        </p>
+      </div>
+
+      {/* Search + Filter */}
+      <div className="mt-9 flex flex-col gap-3 sm:flex-row">
         <SearchBar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -38,20 +49,35 @@ function Listings({ listings }) {
         />
       </div>
 
+      {/* Results */}
       {filteredListings.length === 0 ? (
-        <p className="mt-10 text-center text-gray-600">
-          No listings found.
-        </p>
-      ) : (
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredListings.map((listing) => (
-            <ListingCard
-              key={listing.id}
-              listing={listing}
-            />
-          ))}
+        <div className="mt-12 py-16 text-center">
+          <h2 className="text-xl font-bold text-[#1A1A1A]">
+            No listings found
+          </h2>
+
+          <p className="mt-2 text-sm text-[#8A8577]">
+            Try a different search term or category.
+          </p>
         </div>
+      ) : (
+        <>
+          <p className="mt-9 text-sm font-medium text-[#8A8577]">
+            {filteredListings.length} listing
+            {filteredListings.length !== 1 && "s"} found
+          </p>
+
+          <div className="mt-5 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredListings.map((listing) => (
+              <ListingCard
+                key={listing.id}
+                listing={listing}
+              />
+            ))}
+          </div>
+        </>
       )}
+
     </main>
   );
 }

@@ -5,7 +5,7 @@ function CategoryFilter({ category, setCategory }) {
     <select
       value={category}
       onChange={(e) => setCategory(e.target.value)}
-      className="rounded-lg border px-4 py-3"
+      className="rounded-md border border-[#E5E1D6] bg-white px-4 py-3 text-sm font-medium text-[#1A1A1A] outline-none focus:border-[#1F4D3D] focus:ring-1 focus:ring-[#1F4D3D]"
     >
       <option value="All">All Categories</option>
       <option value="Furniture">Furniture</option>
@@ -16,4 +16,3 @@ function CategoryFilter({ category, setCategory }) {
 }
 
 export default CategoryFilter;
-
